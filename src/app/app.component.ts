@@ -1,8 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SpaceXDataService } from 'src/services/spacexdata.service';
+import { Router } from '@angular/router';
+import { SpaceXDataService, SpaceXLaunch } from '../services/spacexdata.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +25,10 @@ export class AppComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private spaceXDataService: SpaceXDataService) {}
+  constructor(
+    private spaceXDataService: SpaceXDataService,
+    @Inject(DOCUMENT) private document: Document,
+  ) {}
 
   ngOnInit() {
     this.spaceXDataService.getLaunches().subscribe( data => {
@@ -39,7 +44,6 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log(filterValue);
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
@@ -49,5 +53,12 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   getYear(utcDate: Date): number {
     return new Date(utcDate).getUTCFullYear();
+  }
+
+  goToPressKit(launch: SpaceXLaunch): void {
+    console.log(launch);
+    if(launch.links?.presskit){
+      this.document.location.href = launch.links.presskit;
+    }
   }
 }

@@ -2,12 +2,38 @@ table {
     width: 100%;
 }
 
+.mat-table {
+  display: flex;
+  flex-direction: column;
+  
+  ::ng-deep tbody, thead, tfoot {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::ng-deep tbody {
+    overflow: auto;
+    max-height: calc(100vh - 205px);
+  }
+}
+
+.mat-row {
+  display: flex;
+  flex-direction: row;
+  min-height: 56px;
+  padding: 8px 8px 0px;
+}
+
 .mat-form-field {
     font-size: 14px;
     width: 100%;
 }
-td.mat-cell, th.mat-header-cell {
-    padding-left: 16px;
+
+.mat-row.hasPress {
+  cursor: pointer;
+}
+.mat-row:not(.hasPress){
+  background-color: #f4f4f4;
 }
 /* Column Widths */
 .mat-column-flight_number,
@@ -21,4 +47,9 @@ td.mat-cell, th.mat-header-cell {
 
 .mat-column-details {
   width: calc(100vw - 136px);
+  overflow: auto;
+  line-height: 18px;
 }
+
+
+

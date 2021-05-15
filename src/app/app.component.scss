@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+td.mat-cell, th.mat-header-cell {
+    padding-left: 16px;
+}
+/* Column Widths */
+.mat-column-flight_number,
+.mat-column-date_utc {
+  width: 64px;
+}
+
+.mat-column-name {
+  width: 128px;
+}
+
+.mat-column-details {
+  width: calc(100vw - 136px);
+}

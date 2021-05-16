@@ -7,10 +7,10 @@ export interface SpaceXLaunch {
   capsules: any;
   cores: any;
   crew: any;
-  date_local: Date;
+  date_local: string;
   date_precision: string;
   date_unix: number;
-  date_utc: Date;
+  date_utc: string;
   details: string;
   failures: any;
   fairings: any;
@@ -25,7 +25,7 @@ export interface SpaceXLaunch {
   rocket: string;
   ships: Array<any>;
   static_fire_date_unix: number;
-  static_fire_date_utc: Date;
+  static_fire_date_utc: string;
   success: boolean;
   tbd: boolean;
   upcoming: boolean;

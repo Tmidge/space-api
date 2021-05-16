@@ -3,8 +3,7 @@ import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/co
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { SpaceXDataService, SpaceXLaunch } from '../services/spacexdata.service';
+import { SpaceXDataService, SpaceXLaunch } from '../services/spaceXData.service';
 
 @Component({
   selector: 'app-root',

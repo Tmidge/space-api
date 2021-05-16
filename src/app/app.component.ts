@@ -31,7 +31,6 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.spaceXDataService.getLaunches().subscribe( data => {
-      console.log(data);
       this.dataSource.data = data;
     })
   }
@@ -55,7 +54,6 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   goToPressKit(launch: SpaceXLaunch): void {
-    console.log(launch);
     if(launch.links?.presskit){
       this.document.location.href = launch.links.presskit;
     }
